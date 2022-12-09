@@ -11,9 +11,8 @@ def update_head(head, dir):
     if dir=='R': return (head[0]+1, head[1])
 
 def update_tail(tail, head):
-    while abs(head[0] - tail[0]) > 1 or abs(head[1] - tail[1]) > 1:
-       tail = (tail[0]+np.sign(head[0] - tail[0]), tail[1])
-       tail = (tail[0], tail[1]+np.sign(head[1] - tail[1]))
+    while abs(head[0] - tail[0]) > 1 or abs(d2:=head[1] - tail[1]) > 1:
+       tail = (tail[0]+np.sign(head[0] - tail[0]),tail[1]+np.sign(head[1] - tail[1]))
     return tail
 
 def update_board(board, tail):
