@@ -7,25 +7,16 @@ buffer=np.zeros((6,40), dtype=str)
 cycle=0
 X=1
 sigs=[]
-breakpoints=[x for x in range(20, 221, 40)]
+breakpoints=[40*x+60 for x in range(6)]
 
 def SS():
-    global X
-    global cycle
     global breakpoints
     if (cycle in breakpoints):
         breakpoints=breakpoints[1:]
         sigs.append(X*cycle)
-    return X*cycle
 
 def draw():
-    global X
-    global cycle
-    global buffer
-    if abs(cycle%40 - (X)) < 2:
-        buffer[cycle//40][cycle%40] = '#'
-    else:
-        buffer[cycle//40][cycle%40] = '.'
+    buffer[cycle//40][cycle%40] = ['.','#'][abs(cycle%40 - (X)) < 2]
 
 def noop():
     global cycle
@@ -35,7 +26,6 @@ def noop():
 
 def addx(n):
     global X
-    global cycle
     noop()
     X = X + n 
     SS()
